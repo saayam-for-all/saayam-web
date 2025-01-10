@@ -3,6 +3,8 @@ import { RiArrowLeftSLine } from "react-icons/ri";
 import { RiArrowRightSLine } from "react-icons/ri";
 const Pagination = ({ currentPage, totalPages, onPageChange, rowsPerPage, onRowsPerPageChange }) => {
   const renderPageNumbers = () => {
+    // print("currentPage", currentPage);
+    console.log("totalPage", totalPages);
     let pages = [];
     const maxFirstPages = 5;
     const pageRange = 2;
@@ -44,7 +46,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, rowsPerPage, onRows
       }
     } else {
       if (totalPages > 2) {
-        for (let i = 2; i <= Math.min(maxFirstPages, totalPages); i++) {
+        for (let i = 2; i <= Math.min(maxFirstPages, totalPages - 1); i++) {
           pages.push(
             <button
               key={i}
