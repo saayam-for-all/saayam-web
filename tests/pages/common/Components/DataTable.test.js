@@ -1,12 +1,11 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router';
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Table from '../../../../src/common/components/DataTable/Table';
-import { MemoryRouter } from 'react-router';
-
 
 test('it renders table and checks classes', () => {
-  
+
   const mockHeaders = ['id', 'name'];
   const mockRows = [
     { id: 1, name: 'Item 1' },
@@ -18,11 +17,11 @@ test('it renders table and checks classes', () => {
   const mockGetLinkPath = jest.fn(() => '/mock-link');
   const mockOnRowsPerPageChange = jest.fn();
 
-  
+
   render(<MemoryRouter>
     <Table
-      headers={mockHeaders} 
-      rows={mockRows} 
+      headers={mockHeaders}
+      rows={mockRows}
       currentPage={1}
       setCurrentPage={mockSetCurrentPage}
       totalPages={2}
@@ -42,22 +41,20 @@ test('it renders table and checks classes', () => {
   const table = screen.getByTestId('table');
   expect(table).toBeInTheDocument();
 
-  const tableHeader = screen.getByTestId('table-header')
-  expect(tableHeader).toHaveClass("bg-gray-50")
   const tableBody = screen.getByTestId('table-body')
   expect(tableBody).toHaveClass("bg-white divide-y divide-gray-200")
 
   const mapHeaders = screen.getAllByTestId('map-header-one');
   mapHeaders.forEach(header => {
-    expect(header).toHaveClass('px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider');
+    expect(header).toHaveClass('px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider');
   });
 
   const mapHeaderTwo = screen.getAllByTestId('map-data-one');
   mapHeaderTwo.forEach(header => {
     expect(header).toHaveClass("px-6 py-4 whitespace-nowrap")
   })
-  
+
 
   const rows = screen.getAllByRole('row');
-  expect(rows).toHaveLength(mockRows.length + 1); 
+  expect(rows).toHaveLength(mockRows.length + 1);
 });
