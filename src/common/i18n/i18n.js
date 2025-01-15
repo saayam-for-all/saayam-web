@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 //import arTranslation from './locales/ar_SA.json';
 //import asTranslation from './locales/as_IN.json';
@@ -35,9 +36,9 @@ import teTranslation from './locales/te_IN.json';
 import zhTranslation from './locales/zh_CN.json';
 
 i18n
+   .use(LanguageDetector)
    .use(initReactI18next)
    .init({
-      lng: 'en',
       fallbackLng: 'en',
       resources: {
          bn: {
@@ -77,4 +78,3 @@ i18n
    });
 
 export default i18n;
-
